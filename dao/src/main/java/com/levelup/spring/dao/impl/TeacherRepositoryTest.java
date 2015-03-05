@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by denis_zavadsky on 3/3/15.
+ * Created by denis_zavadsky on 3/5/15.
  */
-@Repository("teacherRepository")
-public class TeacherRepositoryImpl implements TeacherRepository {
+@Repository("teacherRepositoryTest")
+public class TeacherRepositoryTest implements TeacherRepository{
+
 
     @Override
     public List<Teacher> getAllTeachers() {
-        System.out.println("Teachers loaded from repository");
         return null;
     }
 }
