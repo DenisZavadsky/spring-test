@@ -1,5 +1,6 @@
 package com.levelup.spring.service;
 
+import com.levelup.spring.model.Car;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -14,9 +15,13 @@ public class SpringTest {
 
     public void doTest(){
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("service.xml");
-        TeacherService teacherService1 = (TeacherService) applicationContext.getBean("teacherService1");
-        TeacherService teacherService2 = (TeacherService) applicationContext.getBean("teacherService2");
+       // TeacherService teacherService1 = (TeacherService) applicationContext.getBean("teacherService1");
+        TeacherService teacherService1 = (TeacherService) applicationContext.getBean("teacherService");
         teacherService1.getAllTeachers();
-        teacherService2.getAllTeachers();
+
+        Car car = (Car) applicationContext.getBean("car");
+
+        applicationContext.destroy();
+        //teacherService2.getAllTeachers();
     }
 }
