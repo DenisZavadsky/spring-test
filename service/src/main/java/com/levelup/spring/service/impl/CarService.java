@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * Created by denis_zavadsky on 3/7/15.
  */
-@Component
+//@Component
 public class CarService {
 
     @Autowired
