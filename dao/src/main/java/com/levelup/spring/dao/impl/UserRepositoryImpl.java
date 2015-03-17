@@ -3,6 +3,7 @@ package com.levelup.spring.dao.impl;
 import com.levelup.spring.dao.UserRepository;
 import com.levelup.spring.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -26,6 +27,9 @@ public class UserRepositoryImpl implements UserRepository{
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private SimpleJdbcInsert jdbcInsertUser;
+
+    @Value("${db.driver.className}")
+    private String dbDriverClassName;
 
 
     @Autowired
