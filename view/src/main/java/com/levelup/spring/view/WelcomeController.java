@@ -1,5 +1,7 @@
 package com.levelup.spring.view;
 
+import com.levelup.spring.service.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/index")
 public class WelcomeController {
+
+    @Autowired
+    private TeacherService teacherService;
 
     @RequestMapping("/")
     public String getIndex(Model model){
