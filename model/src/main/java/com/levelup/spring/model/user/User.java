@@ -1,9 +1,16 @@
 package com.levelup.spring.model.user;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+
 /**
  * Created by denis_zavadsky on 3/14/15.
  */
-public class User {
+
+@XmlRootElement(name = "user")
+public class User implements Serializable {
 
     private Long id;
     private String firstName;
@@ -17,6 +24,7 @@ public class User {
         return id;
     }
 
+    @XmlAttribute
     public void setId(Long id) {
         this.id = id;
     }
@@ -25,6 +33,7 @@ public class User {
         return firstName;
     }
 
+    @XmlAttribute
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -33,6 +42,7 @@ public class User {
         return lastName;
     }
 
+    @XmlAttribute
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -41,6 +51,7 @@ public class User {
         return age;
     }
 
+    @XmlAttribute
     public void setAge(Integer age) {
         this.age = age;
     }
