@@ -16,6 +16,8 @@
         <!--</mvc:message-converters>-->
     </mvc:annotation-driven>
 
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
