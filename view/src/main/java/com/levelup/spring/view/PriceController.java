@@ -3,11 +3,14 @@ package com.levelup.spring.view;
 import com.levelup.spring.model.dto.StockPrice;
 import com.levelup.spring.service.PricesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.xml.bind.ParseConversionEvent;
+import java.text.ParseException;
 
 /**
  * Created by denis_zavadsky on 3/24/15.
@@ -28,4 +31,17 @@ public class PriceController {
         StockPrice price = pricesService.getStockPrice(company);
         return price;
     }
+
+    @RequestMapping(value="/getUpdate/{id}", produces = "application/json", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<StockPrice> getUpdateById(@PathVariable("id") Long id){
+        try {
+            StockPrice price = pricesService.getStockPrice("AAPL");
+            throw new RuntimeException();
+            //return new ResponseEntity<StockPrice>(price, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<StockPrice>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

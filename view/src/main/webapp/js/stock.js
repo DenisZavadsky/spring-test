@@ -1,6 +1,7 @@
 $(document).ready(function(){
     getStockUpdate();
-    setInterval(getStockUpdate,5000);
+    //setInterval(getStockUpdate,5000);
+    getStockUpdateById();
 });
 
 function getStockUpdate(){
@@ -14,6 +15,22 @@ function getStockUpdate(){
             }
         });
     });
+
+}
+
+function getStockUpdateById(){
+
+
+        $.ajax({
+            url:"/getUpdate/"+123,
+            dataType: "json",
+            success: function(data){
+                updateCompanyRow(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                alert(textStatus);
+            }
+        });
 
 }
 
