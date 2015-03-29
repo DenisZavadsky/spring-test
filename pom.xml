@@ -12,6 +12,8 @@
         <module>dao</module>
         <module>service</module>
         <module>view</module>
+        <module>rest</module>
+
     </modules>
     <packaging>pom</packaging>
 

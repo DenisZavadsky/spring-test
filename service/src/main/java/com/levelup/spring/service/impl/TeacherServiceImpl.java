@@ -24,17 +24,10 @@ import java.util.List;
  * Created by denis_zavadsky on 3/5/15.
  */
 @Service("teacherService")
-public class TeacherServiceImpl implements TeacherService, BeanNameAware, BeanClassLoaderAware, ApplicationContextAware,
-        InitializingBean, DisposableBean{
+public class TeacherServiceImpl implements TeacherService{
 
-    private ApplicationContext context;
-    private ClassLoader classLoader;
-    private String beanName;
 
-    @Resource(name = "teacherRepositoryTest")
-//    @Inject
-//    @Named("teacherRepositoryTest")
-    //@Autowired
+    @Resource(name = "teacherRepository")
     private TeacherRepository teacherRepository;
 
     public TeacherServiceImpl() {
@@ -55,50 +48,7 @@ public class TeacherServiceImpl implements TeacherService, BeanNameAware, BeanCl
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
-        System.out.println("ApplicationContext aware");
+    public Teacher getTeacherById(Long id) {
+        return teacherRepository.getTeacherById(id);
     }
-
-    @Override
-    public void setBeanClassLoader(ClassLoader classLoader) {
-        this.classLoader = classLoader;
-        System.out.println("ClassLoader aware");
-    }
-
-    @Override
-    public void setBeanName(String s) {
-        this.beanName = s;
-        System.out.println("BeanName aware");
-    }
-
-    @PostConstruct
-    public void init1(){
-        System.out.println("PostConstruct called");
-    }
-
-
-    public void init2(){
-        System.out.println("XML init-method called");
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("Initializing Bean method called");
-    }
-
-    @PreDestroy
-    public void destroy1(){
-        System.out.println("PreDestroy called");
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("Disposable Bean method called");
-    }
-
-    public void destroy2(){
-        System.out.println("XML destroy-method called");
-    }
-
 }

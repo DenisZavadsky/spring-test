@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.xml.bind.ParseConversionEvent;
 import java.text.ParseException;
@@ -28,6 +30,7 @@ public class PriceController {
 
     @RequestMapping(value = "/getUpdates", produces = "application/json")
     public @ResponseBody StockPrice getStockUpdates(@RequestParam("company") String company){
+        //WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext()
         StockPrice price = pricesService.getStockPrice(company);
         return price;
     }

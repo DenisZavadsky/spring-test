@@ -17,7 +17,7 @@ import java.util.List;
  * Created by denis_zavadsky on 3/5/15.
  */
 @Repository("teacherRepositoryTest")
-public class TeacherRepositoryTest implements TeacherRepository{
+public class TeacherRepositoryTest {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -33,7 +33,7 @@ public class TeacherRepositoryTest implements TeacherRepository{
 //        this.jdbcTemplate = new JdbcTemplate(dataSource);
 //    }
 
-    @Override
+
     public List<Teacher> getAllTeachers() {
 
         Integer teachersCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM Teacher", Integer.class);
