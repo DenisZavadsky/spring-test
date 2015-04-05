@@ -24,4 +24,6 @@
   </c:forEach>
 </table>
 
+
 </div>
+<div id="popup-wrapper" class="easy-modal"></div>

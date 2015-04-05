@@ -12,4 +12,5 @@ public interface TransactionRepository {
 
     List<Transaction> getAll();
     List<Transaction> findByAccountNumber(String accountNumber);
+    Transaction getById(Long id);
 }

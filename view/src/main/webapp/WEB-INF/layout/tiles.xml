@@ -10,4 +10,8 @@
         <put-attribute name="main.content" value="/WEB-INF/layout/main/content.jsp" />
         <put-attribute name="main.footer" value="/WEB-INF/layout/main/footer.jsp" />
     </definition>
+
+    <definition name="edit.popup" template="/WEB-INF/layout/popup/edit-popup.jsp">
+
+    </definition>
 </tiles-definitions>

@@ -11,4 +11,5 @@ public interface TransactionService {
 
     List<Transaction> getAll();
     List<Transaction> findByAccountNumber(String accountNumber);
+    Transaction getById(Long id);
 }

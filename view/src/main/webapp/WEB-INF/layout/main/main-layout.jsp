@@ -13,6 +13,7 @@
    <link rel="stylesheet" href="/css/main.css"/>
    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
    <script src="/js/trans.js"></script>
+   <script src="/js/jquery.simplemodal.1.4.4.min.js"></script>
 </head>
 <body>
 <div class="header">

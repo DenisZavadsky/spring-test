@@ -46,4 +46,20 @@ public class TranactionRepositoryImpl implements TransactionRepository{
         List<Transaction> result = new ArrayList<>(Collections2.filter(transactionList, predicate));
         return result;
     }
+
+    @Override
+    public Transaction getById(final Long id) {
+        Predicate<Transaction> predicate = new Predicate<Transaction>() {
+            @Override
+            public boolean apply(Transaction transaction) {
+                if (transaction.getId().equals(id)){
+                    return true;
+                }
+                return false;
+            }
+        };
+        List<Transaction> result = new ArrayList<>(Collections2.filter(transactionList, predicate));
+        if (result.size()>0) return result.get(0);
+        return null;
+    }
 }
