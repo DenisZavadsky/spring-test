@@ -1,16 +1,24 @@
 package com.levelup.spring.model;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by denis_zavadsky on 3/3/15.
  */
-public class Teacher {
+@Entity
+@Table(name = "TEACHER")
+public class Teacher implements Serializable{
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
 
+    @OneToMany(targetEntity = Student.class, mappedBy = "teacher", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Student> students;
 
     public Long getId() {
@@ -36,6 +44,8 @@ public class Teacher {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+
 
     public List<Student> getStudents() {
         return students;
