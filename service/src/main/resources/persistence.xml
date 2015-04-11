@@ -4,6 +4,8 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.levelup.spring.model.Student</class>
         <class>com.levelup.spring.model.Teacher</class>
+        <class>com.levelup.spring.model.Category</class>
+        <class>com.levelup.spring.model.Product</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <validation-mode>NONE</validation-mode>
         <properties>
