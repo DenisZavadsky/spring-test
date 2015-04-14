@@ -42,4 +42,6 @@ public class ProductController {
         List<Product> result = productService.getAllProducts();
         return result;
     }
+
+
 }
