@@ -1,15 +1,16 @@
 package com.levelup.spring.view;
 
 import com.levelup.spring.model.Product;
+import com.levelup.spring.model.Student;
+import com.levelup.spring.model.dto.StockPrice;
 import com.levelup.spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/product")
+@SessionAttributes({"price","student"})
 public class ProductController {
 
     @Autowired
@@ -43,5 +45,28 @@ public class ProductController {
         return result;
     }
 
+
+    @RequestMapping("/create")
+    public String createStockPrice(Model model, @ModelAttribute("stockPrice") StockPrice stockPrice){
+        //model.addAttribute("student", getStudent());
+        model.addAttribute("price", stockPrice);
+        getStudent();
+        return "test.view";
+    }
+
+
+    @ModelAttribute("student")
+    private Student getStudent(){
+        Student student = new Student();
+        student.setId(1L);
+        //.....
+
+        return student;
+    }
+
+    @RequestMapping(value = "/getPrice", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody StockPrice getStockPrice(@ModelAttribute("price") StockPrice stockPrice){
+        return stockPrice;
+    }
 
 }
