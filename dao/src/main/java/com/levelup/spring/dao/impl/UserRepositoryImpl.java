@@ -50,7 +50,7 @@ public class UserRepositoryImpl implements UserRepository{
     public User getUserById(Long id) {
         String sql = "SELECT * FROM USER where id=:pid";
         Map<String,String> parameterMap = new HashMap<>();
-        parameterMap.put("pid",id.toString());
+        parameterMap.put("pid", id.toString());
         User user = namedParameterJdbcTemplate.queryForObject(sql,parameterMap, new BeanPropertyRowMapper<User>(User.class));
         return user;
     }
@@ -70,5 +70,14 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public List<User> getAllUsers() {
         return null;
+    }
+
+
+    public User getUserByLogin(String login){
+        String sql = "SELECT * FROM USER where login=:login";
+        Map<String,String> parameterMap = new HashMap<>();
+        parameterMap.put("login",login);
+        User user = namedParameterJdbcTemplate.queryForObject(sql,parameterMap, new BeanPropertyRowMapper<User>(User.class));
+        return user;
     }
 }

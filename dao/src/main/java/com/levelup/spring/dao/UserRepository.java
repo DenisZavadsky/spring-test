@@ -15,4 +15,5 @@ public interface UserRepository {
     User getUserByName(String firstName, String lastName);
 
     List<User> getAllUsers();
+    User getUserByLogin(String login);
 }

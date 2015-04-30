@@ -16,6 +16,10 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private Integer age;
+    private String login;
+    private String password;
+    private String role;
+
 
     public User() {
     }
@@ -54,5 +58,29 @@ public class User implements Serializable {
     @XmlAttribute
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
