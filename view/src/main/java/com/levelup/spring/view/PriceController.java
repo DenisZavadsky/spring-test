@@ -28,7 +28,7 @@ public class PriceController {
         return "stock";
     }
 
-    @RequestMapping(value = "/getUpdates", produces = "application/json")
+    @RequestMapping(value = "/getUpdates", produces = "application/json", method = RequestMethod.POST)
     public @ResponseBody StockPrice getStockUpdates(@RequestParam("company") String company){
         //WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext()
         StockPrice price = pricesService.getStockPrice(company);
