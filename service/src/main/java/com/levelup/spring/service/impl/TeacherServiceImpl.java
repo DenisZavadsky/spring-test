@@ -18,6 +18,7 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +46,7 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Teacher> getAllTeachers() {
 
         return teacherRepository.getAllTeachers();
+//        return new ArrayList<>();
     }
 
     @Override
