@@ -9,10 +9,20 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class Consumer1 implements Runnable {
 
+    private int number;
+
     private final ArrayBlockingQueue<Message> queue;
 
     public Consumer1(ArrayBlockingQueue<Message> queue) {
         this.queue = queue;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     @Override
@@ -20,7 +30,7 @@ public class Consumer1 implements Runnable {
         while (true){
             try {
                 Message message = queue.take();
-                System.out.println(message.getContent());
+                System.out.println("Consumer "+number+" : "+message.getContent());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

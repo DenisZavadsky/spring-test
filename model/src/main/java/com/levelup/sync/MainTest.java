@@ -30,12 +30,17 @@ public class MainTest {
 
     private void test2(){
         ArrayBlockingQueue<Message> queue = new ArrayBlockingQueue<>(100);
-        Consumer1 consumer = new Consumer1(queue);
+        Consumer1 consumer1 = new Consumer1(queue);
+        consumer1.setNumber(1);
+        Consumer1 consumer2 = new Consumer1(queue);
+        consumer2.setNumber(2);
         Producer1 producer = new Producer1(queue);
 
         Thread p = new Thread(producer);
-        Thread c = new Thread(consumer);
-        c.start();
+        Thread c1 = new Thread(consumer1);
+        Thread c2 = new Thread(consumer2);
+        c1.start();
+        c2.start();
         p.start();
     }
 }
