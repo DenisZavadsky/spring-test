@@ -2,9 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
    <context:component-scan base-package="com.levelup.spring.dao"></context:component-scan>
 
@@ -17,6 +21,22 @@
     <!--<property name="password" value="${jdbc.password}"/>-->
     <!--</bean>-->
 
+
+    <mongo:mongo host="${mongo.host}" port="${mongo.port}"/>
+
+    <!--
+    Создаем бин 'mongoDbFactory'.
+    Если MongoDB не требует авторизации, то поля username, password можно убрать
+    -->
+    <mongo:db-factory
+            username="${mongo.username}"
+            password="${mongo.password}"
+            dbname="local"
+            mongo-ref="mongo"/>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource" p:driverClassName="${db.driver.className}"
